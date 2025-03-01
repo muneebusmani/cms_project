@@ -11,16 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('media', function (Blueprint $table) {
+        Schema::create('role_user', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->string('file_path');
-            $table->enum('type', ['image', 'video', 'audio', 'document']);
-            $table->unsignedBigInteger('mediable_id');
-            $table->string('mediable_type');
-            $table->unsignedBigInteger('size');
-            $table->string('mime_type');
-            $table->string('disk');
+            $table->foreignId('role_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
@@ -30,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('media');
+        Schema::dropIfExists('role_user');
     }
 };

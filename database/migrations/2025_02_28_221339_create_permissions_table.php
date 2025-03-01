@@ -37,7 +37,7 @@ return new class extends Migration
                 'view_media',
                 'manage_settings',
             ]);
-
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }

@@ -37,6 +37,9 @@ return new class extends Migration
             // The timestamp when the post was published
             $table->timestamp('published_at')->nullable();
 
+            // The timestamp when the post was deleted
+            $table->softDeletes();
+
             // The timestamps for the post
             $table->timestamps();
         });
