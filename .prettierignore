@@ -1,1 +1,6 @@
 resources/js/components/ui/*
+app/*
+database/*
+config/*
+routes/*
+tests/*

@@ -11,9 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::create('roles', function (Blueprint $table) {
+            $table->id();
+            $table->enum('name', [
+                'admin',
+                'editor',
+                'author',
+                'subscriber',
+            ])->comment('The role name');
+            $table->timestamps();
+        });
+
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('role_id')->constrained()->cascadeOnDelete();
             $table->string('name');
+            $table->string('profile_image');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
